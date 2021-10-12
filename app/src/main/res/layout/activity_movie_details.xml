@@ -14,10 +14,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
@@ -32,18 +32,16 @@
                 android:text="TextView"
                 android:textColor="#FFBD66"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/img_path_details"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/code_details"
-                app:layout_constraintTop_toTopOf="@+id/code_details" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/code_details" />
 
             <ImageView
                 android:id="@+id/img_path_details"
                 android:layout_width="200dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="68dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -52,37 +50,42 @@
                 android:id="@+id/lbl_movie_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="352dp"
+                android:layout_marginTop="4dp"
                 android:maxLines="3"
                 android:text="TextView"
                 android:textColor="#FFBD66"
                 android:textSize="23sp"
                 app:layout_constraintEnd_toEndOf="@+id/img_path_details"
-                app:layout_constraintHorizontal_bias="0.471"
                 app:layout_constraintStart_toStartOf="@+id/img_path_details"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/img_path_details" />
 
             <TextView
                 android:id="@+id/lbl_movie_genre"
-                android:layout_width="0dp"
-                android:layout_height="24dp"
-                android:maxLines="15"
+                android:layout_width="113dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="10dp"
+                android:maxLines="3"
                 android:text="TextView"
                 android:textColor="#FFBD66"
-                android:textSize="18sp"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/divider4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/genre_details"
-                app:layout_constraintTop_toTopOf="@+id/genre_details" />
+                app:layout_constraintHorizontal_bias="0.121"
+                app:layout_constraintStart_toEndOf="@+id/divider2"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_movie_title" />
 
             <TextView
-                android:id="@+id/genre_details"
+                android:id="@+id/lbl_release_movie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="68dp"
-                android:layout_marginTop="24dp"
-                android:text="Genre : "
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="28dp"
+                android:text="TextView"
                 android:textColor="#FFBD66"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_movie_title" />
 
@@ -90,83 +93,157 @@
                 android:id="@+id/code_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="152dp"
-                android:layout_marginTop="28dp"
-                android:text="Code :"
+                android:layout_marginStart="256dp"
+                android:layout_marginTop="116dp"
+                android:text="ID : "
                 android:textColor="#FFBD66"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/img_path_details"
+                app:layout_constraintStart_toStartOf="@+id/lbl_desc_movie"
                 app:layout_constraintTop_toBottomOf="@+id/lbl_desc_movie" />
 
             <TextView
                 android:id="@+id/desc_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="24dp"
-                android:text="Description :"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="12dp"
+                android:text="Storyline :"
                 android:textColor="#FFBD66"
-                android:textSize="19sp"
+                android:textSize="17sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/duration_movie" />
+                app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
             <TextView
                 android:id="@+id/lbl_desc_movie"
-                android:layout_width="0dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:maxLines="28"
                 android:text="TextView"
                 android:textColor="#FFBD66"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="@+id/img_path_details"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/desc_details"
-                app:layout_constraintTop_toBottomOf="@+id/desc_details" />
-
-            <TextView
-                android:id="@+id/duration_movie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
-                android:layout_marginTop="28dp"
-                android:text="Duration : "
-                android:textColor="#FFBD66"
                 android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genre_details" />
+                app:layout_constraintTop_toBottomOf="@+id/desc_details" />
 
             <TextView
                 android:id="@+id/lbl_duration_movie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:text="121"
                 android:textColor="#FFBD66"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/duration_movie"
-                app:layout_constraintTop_toTopOf="@+id/duration_movie" />
+                app:layout_constraintStart_toEndOf="@+id/divider3"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_movie_title" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="8dp"
                 android:text="Minutes"
                 android:textColor="#FFBD66"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@+id/lbl_duration_movie"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_movie_title"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/lbl_duration_movie"
-                app:layout_constraintTop_toTopOf="@+id/lbl_duration_movie" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_movie_title" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="#FFBD45"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="         Movie Details"
+                app:titleTextColor="@color/black" />
 
             <ImageView
                 android:id="@+id/backbut"
-                android:layout_width="51dp"
-                android:layout_height="64dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
+                android:layout_width="43dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_movie_title" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="1dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_duration_movie"
+                app:layout_constraintHorizontal_bias="0.55"
+                app:layout_constraintStart_toEndOf="@+id/lbl_release_movie"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_movie_title" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="320dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="68dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.395"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_movie_title" />
+
+            <TextView
+                android:id="@+id/lbl_vote_movie"
+                android:layout_width="49dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:text="TextView"
+                android:textColor="#FFBD66"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView10"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/divider4"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="192dp"
+                android:layout_marginTop="12dp"
+                android:text="Rating :"
+                android:textColor="#FFBD66"
+                app:layout_constraintStart_toEndOf="@+id/desc_details"
+                app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginEnd="3dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/divider4"
+                app:srcCompat="@drawable/ttt" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

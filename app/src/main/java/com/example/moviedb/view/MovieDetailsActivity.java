@@ -18,7 +18,7 @@ import com.example.moviedb.viewmodel.MovieViewModel;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
-    private TextView lbl_text_code,lbl_text_title,lbl_text_genre,lbl_text_desc,lbl_text_duration;
+    private TextView lbl_text_code,lbl_text_title,lbl_text_genre,lbl_text_desc,lbl_text_duration,lbl_text_release,lbl_vote;
     private String movie_id,title,duration,poster,desc ="";
     private ImageView img_details,backbut;
     private MovieViewModel viewModel;
@@ -39,12 +39,13 @@ public class MovieDetailsActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(MovieDetailsActivity.this).get(MovieViewModel.class);
         viewModel.getMovieById(movie_id);
         viewModel.getResultGetMovieById().observe(MovieDetailsActivity.this, showDetails);
-
+        lbl_text_release=findViewById(R.id.lbl_release_movie);
         lbl_text_code = findViewById(R.id.lbl_movie_details);
         lbl_text_code.setText(movie_id);
         lbl_text_title=findViewById(R.id.lbl_movie_title);
         lbl_text_title.setText(title);
         lbl_text_genre=findViewById(R.id.lbl_movie_genre);
+        lbl_vote=findViewById(R.id.lbl_vote_movie);
         lbl_text_duration=findViewById(R.id.lbl_duration_movie);
         Glide.with(MovieDetailsActivity.this).load(Const.IMG_URL+poster).into(img_details);
         lbl_text_desc=findViewById(R.id.lbl_desc_movie);
@@ -62,6 +63,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         public void onChanged(Movies movies) {
                 String genre="";
                 String duration = String.valueOf(movies.getRuntime());
+                String release = movies.getRelease_date();
+                String vote = String.valueOf(movies.getVote_average());
                 for (int i = 0; i<movies.getGenres().size(); i++) {
                     if (i == movies.getGenres().size() - 1) {
                         genre += movies.getGenres().get(i).getName();
@@ -71,7 +74,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 }
                 lbl_text_genre.setText(genre);
                 lbl_text_duration.setText(duration);
-
+                lbl_text_release.setText(release);
+                lbl_vote.setText(vote);
 
         }
     };
