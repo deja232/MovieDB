@@ -3,4 +3,8 @@
     <string name="btn_hit_main">HIT API</string>
     <string name="title">Title</string>
     <string name="Subtitle">Sub Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="up_coming">Up Coming</string>
 </resources>
