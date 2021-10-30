@@ -32,25 +32,22 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         movie_id = intent.getStringExtra("movie_id");
-        img_details = findViewById(R.id.img_path_details);
+        img_details = findViewById(R.id.img_fragment_details);
         title = intent.getStringExtra("title_movie");
         poster = intent.getStringExtra("poster_movie");
         desc = intent.getStringExtra("overview_movie");
         viewModel = new ViewModelProvider(MovieDetailsActivity.this).get(MovieViewModel.class);
         viewModel.getMovieById(movie_id);
         viewModel.getResultGetMovieById().observe(MovieDetailsActivity.this, showDetails);
-        lbl_text_release=findViewById(R.id.lbl_release_movie);
-        lbl_text_code = findViewById(R.id.lbl_movie_details);
+        lbl_text_release=findViewById(R.id.date_fragment);
         lbl_text_code.setText(movie_id);
-        lbl_text_title=findViewById(R.id.lbl_movie_title);
+        lbl_text_title=findViewById(R.id.title_fragment);
         lbl_text_title.setText(title);
-        lbl_text_genre=findViewById(R.id.lbl_movie_genre);
-        lbl_vote=findViewById(R.id.lbl_vote_movie);
-        lbl_text_duration=findViewById(R.id.lbl_duration_movie);
+        lbl_text_genre=findViewById(R.id.genre_fragment);
+        lbl_vote=findViewById(R.id.rating_fragment);
         Glide.with(MovieDetailsActivity.this).load(Const.IMG_URL+poster).into(img_details);
-        lbl_text_desc=findViewById(R.id.lbl_desc_movie);
+        lbl_text_desc=findViewById(R.id.description_fragment_details);
         lbl_text_desc.setText(desc);
-        backbut=findViewById(R.id.backbut);
         backbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
