@@ -2,6 +2,7 @@ package com.example.moviedb.view.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.moviedb.R;
 import com.example.moviedb.adapter.NowPlayingAdapter;
@@ -20,6 +22,9 @@ import com.example.moviedb.helper.ItemClickSupport;
 import com.example.moviedb.model.NowPlaying;
 import com.example.moviedb.model.UpComing;
 import com.example.moviedb.viewmodel.MovieViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,6 +74,11 @@ public class UpComingFragment extends Fragment {
     }
     private RecyclerView rv_up_coming;
     private MovieViewModel view_model;
+    private int page =1;
+    private Boolean Loading = false;
+    private UpComingAdapter adapter;
+    private Boolean cek = false;
+    private List<UpComing.Results> resultsList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,15 +91,51 @@ public class UpComingFragment extends Fragment {
         view_model.getUpComing();
         view_model.getResultUpComing().observe(getActivity(), showUpComing);
 
+        adapter = new UpComingAdapter(getActivity());
+
         return view;
     }
     private Observer<UpComing> showUpComing = new Observer<UpComing>() {
         @Override
         public void onChanged(UpComing upComing) {
-            rv_up_coming.setLayoutManager(new LinearLayoutManager(getActivity()));
-            UpComingAdapter adapter = new UpComingAdapter(getActivity());
-            adapter.setListUpComing(upComing.getResults());
-            rv_up_coming.setAdapter(adapter);
+            if(page == 1) {
+                rv_up_coming.setLayoutManager(new LinearLayoutManager(getActivity()));
+                adapter.setListUpComing(upComing.getResults());
+                rv_up_coming.setAdapter(adapter);
+                resultsList.addAll(upComing.getResults());
+            }else{
+                resultsList.add(null);
+                adapter.setListUpComing(resultsList);
+                adapter.notifyItemInserted(resultsList.size()-1);
+                resultsList.remove(resultsList.size()-1);
+                resultsList.addAll(upComing.getResults());
+                adapter.setListUpComing(resultsList);
+                adapter.notifyDataSetChanged();
+                cek = false;
+            }
+
+            rv_up_coming.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                    LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                    if (!Loading) {
+
+                        if (layoutManager != null && layoutManager.findLastCompletelyVisibleItemPosition() == resultsList.size()-2 && cek == false) {
+
+                            page++;
+                            Loading = true;
+                            view_model.getUpComing();
+                            Toast.makeText(getContext(), String.valueOf(page), Toast.LENGTH_SHORT).show();
+                            cek = false;
+                            Loading = false;
+                            view_model.getResultUpComing().observe(getActivity(), showUpComing);
+                        }
+                    }
+                }
+
+            });
 
             ItemClickSupport.addTo(rv_up_coming).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
                 @Override

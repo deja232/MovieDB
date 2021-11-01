@@ -33,8 +33,8 @@ public class MovieViewModel extends AndroidViewModel {
 
     //==Begin of viewmodel get now playing
     private MutableLiveData<NowPlaying> resultGetNowPlaying = new MutableLiveData<>();
-    public void getNowPlaying(){
-        resultGetNowPlaying = repository.getNowPlayingData();
+    public void getNowPlaying(int pages){
+        resultGetNowPlaying = repository.getNowPlayingData(pages);
     }
     public LiveData<NowPlaying> getResultNowPlaying(){
         return resultGetNowPlaying;

@@ -17,6 +17,7 @@ public class NowPlayingActivity extends AppCompatActivity {
 
     private RecyclerView rv_now_playing;
     private MovieViewModel view_model;
+    private int pages = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_now_playing);
         rv_now_playing = findViewById(R.id.rv_now_playing);
         view_model = new ViewModelProvider(NowPlayingActivity.this).get(MovieViewModel.class);
-        view_model.getNowPlaying();
+        view_model.getNowPlaying(pages);
         view_model.getResultNowPlaying().observe(NowPlayingActivity.this, showNowPlaying);
     }
 
